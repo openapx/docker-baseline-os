@@ -1,0 +1,19 @@
+# Version specific
+FROM debian:bookworm
+
+
+# -- add license file to root directory
+COPY LICENSE /LICENSE-baseline-os
+
+
+
+# -- binary libraries
+#    note: difference in repo locations
+#    note: include OS updates
+
+COPY libs-debian /opt/openapx/config/baseline-os/
+COPY --chmod=755 scripts/baseline-os/bin-libs.sh /opt/openapx/utilities/
+
+RUN /opt/openapx/utilities/bin-libs.sh --with-updates /opt/openapx/config/baseline-os/libs-debian
+
+
