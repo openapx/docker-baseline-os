@@ -55,7 +55,9 @@ case ${OS_RELEASE} in
     
    fedora | rocky)
       OS_UPDATE="dnf update --assumeyes"
-      OS_INSTALL_LIBS="dnf install --assumeyes"
+
+      # note: added allowerasing to manage minimal conflicts
+      OS_INSTALL_LIBS="dnf install --allowerasing --assumeyes"
       ;;
 
     *)
