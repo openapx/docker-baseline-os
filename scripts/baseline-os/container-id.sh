@@ -6,11 +6,14 @@
 #  note: ID appended to /opt/openapx/container-provenance
 #
 
-
 if [ -z "${OPENAPX_CONTAINERID}" ]; then
   echo "Container ID (OPENAPX_CONTAINERID) not set in action (see Dockerfile)"
   exit 1
 fi
+
+
+# -- identify container in build log
+echo "-- container ID  ${OPENAPX_CONTAINERID}"
 
 
 # -- make sure scaffolding exists
