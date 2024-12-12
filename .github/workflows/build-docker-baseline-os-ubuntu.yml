@@ -53,7 +53,7 @@ jobs:
         with:
           context: .
           build-args: |
-            ACTION_CONTAINER_ID=${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR }}.${{ vars.VERSION_MINOR }}-dev.${{ github.run_id}}-${{ env.OS_TAG }}
+            OPENAPX_CONTAINERID=${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR }}.${{ vars.VERSION_MINOR }}-dev.${{ github.run_id}}-${{ env.OS_TAG }}
           file: docker/baseline-os/Dockerfile-baseline-os-${{ env.OS_TAG }}
           push: true
           tags: |
@@ -68,7 +68,7 @@ jobs:
         with:
           context: .
           build-args: |
-            ACTION_CONTAINER_ID=${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR}}.${{ vars.VERSION_MINOR }}.${{ github.run_number}}-${{ github.sha}}-${{ env.OS_TAG }}
+            OPENAPX_CONTAINERID=${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR}}.${{ vars.VERSION_MINOR }}.${{ github.run_number}}-${{ github.sha}}-${{ env.OS_TAG }}
           file: docker/baseline-os/Dockerfile-baseline-os-${{ env.OS_TAG }}
           push: true
           tags: |

@@ -2,8 +2,7 @@
 FROM ubuntu:24.04
 
 # -- container ID
-ARG ACTION_CONTAINER_ID
-ENV OPENAPX_CONTAINERID ${{ACTION_CONTAINER_ID}}
+ARG OPENAPX_CONTAINERID="unknown"
 
 # -- add license file to root directory
 COPY LICENSE /LICENSE-baseline-os
