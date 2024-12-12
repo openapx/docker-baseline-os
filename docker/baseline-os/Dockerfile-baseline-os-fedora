@@ -1,6 +1,9 @@
 # Version specific
 FROM fedora:41
 
+# -- container ID
+ARG OPENAPX_CONTAINERID="unknown"
+
 
 # -- add license file to root directory
 COPY LICENSE /LICENSE-baseline-os
