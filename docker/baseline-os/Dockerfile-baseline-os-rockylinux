@@ -15,10 +15,11 @@ COPY LICENSE /LICENSE-baseline-os
 #    note: include OS updates
 
 COPY libs-rockylinux /opt/openapx/config/baseline-os/
-COPY --chmod=755 scripts/baseline-os/bin-libs.sh /opt/openapx/utilities/
+COPY --chmod=755 scripts/baseline-os/bin-libs.sh scripts/baseline-os/container-id.sh /opt/openapx/utilities/
 
 #    note: need extended packages for linux
-RUN dnf install --assumeyes epel-release && \
+RUN /opt/openapx/utilities/container-id.sh && \
+    dnf install --assumeyes epel-release && \
     /opt/openapx/utilities/bin-libs.sh --with-updates /opt/openapx/config/baseline-os/libs-rockylinux
 
 
