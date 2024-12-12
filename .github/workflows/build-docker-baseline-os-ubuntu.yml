@@ -50,10 +50,10 @@ jobs:
         if: ${{ env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'development' }} 
         id: devpush
         uses: docker/build-push-action@v5
-        env:
-          ACTION_CONTAINER_ID: ${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR }}.${{ vars.VERSION_MINOR }}-dev.${{ github.run_id}}-${{ env.OS_TAG }}
         with:
           context: .
+          build-args: |
+            ACTION_CONTAINER_ID: ${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR }}.${{ vars.VERSION_MINOR }}-dev.${{ github.run_id}}-${{ env.OS_TAG }}
           file: docker/baseline-os/Dockerfile-baseline-os-${{ env.OS_TAG }}
           push: true
           tags: |
@@ -65,10 +65,10 @@ jobs:
         if: env.BRANCH_NAME == 'main'
         id: prodpush
         uses: docker/build-push-action@v5
-        env:
-          ACTION_CONTAINER_ID: ${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR}}.${{ vars.VERSION_MINOR }}.${{ github.run_number}}-${{ github.sha}}-${{ env.OS_TAG }}
         with:
           context: .
+          build-args: |
+            ACTION_CONTAINER_ID: ${{ github.repository_owner }}/baseline-os:${{ vars.VERSION_MAJOR}}.${{ vars.VERSION_MINOR }}.${{ github.run_number}}-${{ github.sha}}-${{ env.OS_TAG }}
           file: docker/baseline-os/Dockerfile-baseline-os-${{ env.OS_TAG }}
           push: true
           tags: |

@@ -7,8 +7,8 @@
 #
 
 
-if [ -z "${ACTION_CONTAINER_ID}" ]; then
-  echo "Container ID (ACTION_CONTAINER_ID) not set in action"
+if [ -z "${OPENAPX_CONTAINERID}" ]; then
+  echo "Container ID (OPENAPX_CONTAINERID) not set in action (see Dockerfile)"
   exit 1
 fi
 
@@ -17,10 +17,10 @@ fi
 mkdir -p /opt/openapx
 
 # -- add container identity 
-echo "${ACTION_CONTAINER_ID}" > /opt/openapx/container-id
+echo "${OPENAPX_CONTAINERID}" > /opt/openapx/container-id
 
 # -- append container ID to provenance
-echo "${ACTION_CONTAINER_ID}" >> /opt/openapx/container-provenance
+echo "${OPENAPX_CONTAINERID}" >> /opt/openapx/container-provenance
 
 
 exit 0 
